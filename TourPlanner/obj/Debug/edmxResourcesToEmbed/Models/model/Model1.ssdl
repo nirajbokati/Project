@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TourPlannerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TourPlanner.dbo.tblNavbar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tblNavbar">
+    <Key>
+      <PropertyRef Name="NavbarID" />
+    </Key>
+    <Property Name="NavbarID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MenuName" Type="nvarchar" MaxLength="50" />
+    <Property Name="MenuIsActive" Type="bit" />
+    <Property Name="Menuhref" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblPackage">
+    <Key>
+      <PropertyRef Name="PackageID" />
+    </Key>
+    <Property Name="PackageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PackageImage" Type="nvarchar" MaxLength="500" />
+    <Property Name="Packagename" Type="nvarchar" MaxLength="50" />
+    <Property Name="PackageDescription" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <Function Name="dbNavSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectPackage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spAddPackage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PackageImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="Packagename" Type="nvarchar" Mode="In" />
+    <Parameter Name="PackageDescription" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="TourPlannerModelStoreContainer">
+    <EntitySet Name="tblPackage" EntityType="Self.tblPackage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblNavbar" EntityType="Self.tblNavbar" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblNavbar].[NavbarID] AS [NavbarID], 
+    [tblNavbar].[MenuName] AS [MenuName], 
+    [tblNavbar].[MenuIsActive] AS [MenuIsActive], 
+    [tblNavbar].[Menuhref] AS [Menuhref]
+    FROM [dbo].[tblNavbar] AS [tblNavbar]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,161 @@
+﻿@model IEnumerable<TourPlanner.Models.model.menu>
+
+<link href="~/Content/custom.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/animate.css/3.5.1/animate.min.css">
+
+<style>
+
+
+    /* reset webkit search input browser style */
+
+    .searchInput {
+        padding: 5px 0px 5px 0px !important;
+        margin-left: 10px;
+    }
+
+    input {
+        outline: none;
+    }
+
+        input[type=search] {
+            -webkit-appearance: textfield;
+            -webkit-box-sizing: content-box;
+            font-family: inherit;
+            font-size: 100%;
+        }
+
+        input::-webkit-search-decoration,
+        input::-webkit-search-cancel-button {
+            display: none; /* remove the search and cancel icon */
+        }
+
+        /* search input field */
+        input[type=search] {
+            border: #fff;
+            padding: 15px 10px 15px 32px;
+            width: 120px;
+            border-radius: 1em;
+            -webkit-transition: all .5s;
+            -moz-transition: all .5s;
+            transition: all .5s;
+            background-color: #fdfefe !important;
+        }
+
+            input[type=search]:focus {
+                width: 180px;
+                background-color: #fff !important;
+                border-color: #e9ebee;
+            }
+
+        /* placeholder */
+        input:-moz-placeholder {
+            color: #999;
+        }
+
+        input::-webkit-input-placeholder {
+            color: #999;
+        }
+
+    /* demo B */
+    #demo-b input[type=search] {
+        width: 15px;
+        padding-left: 10px;
+        color: transparent;
+        cursor: pointer;
+    }
+
+        #demo-b input[type=search]:hover {
+            background-color: #fff;
+        }
+
+        #demo-b input[type=search]:focus {
+            width: 130px;
+            padding-left: 32px;
+            color: #000;
+            background-color: #fff;
+            cursor: auto;
+        }
+
+    #demo-b input:-moz-placeholder {
+        color: transparent;
+    }
+
+    #demo-b input::-webkit-input-placeholder {
+        color: transparent;
+    }
+
+    #logo {
+        font-weight: 500 !important;
+        margin-bottom: 0px !important;
+        font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+        font-size: 28px !important;
+        line-height: 32px !important;
+        letter-spacing: -0.6px !important;
+        padding-top: 2px !important;
+        padding-bottom: 2px !important;
+        color: #484848 !important;
+        text-decoration: none;
+    }
+
+    a {
+        background-color: #f8f8f8;
+    }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+    navbar-default {
+        background-color: #f8f8f8;
+        border-color: #e7e7e7;
+    }
+
+    .navbar-header {
+        padding-top: 5px;
+    }
+
+    .navbar-nav > li > a {
+        padding-top: 23px;
+        padding-bottom: 15px;
+        margin: 0px 5px 0px 5px;
+    }
+</style>
+
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/Home/Index"> <h2 id="logo"> Tour Planner </h2> </a>
+        </div>
+
+        <form class="pull-left searchInput">
+            <input type="search" placeholder="Search">
+
+            <label for="search" class="glyphicon glyphicon-search" rel="tooltip" title="search"></label>
+
+        </form>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav pull-right">
+                @foreach (var item in Model)
+                {
+                    if (item != null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="@item.Menuhref">@item.MenuName</a>
+
+                        </li>
+                    }
+                }
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+

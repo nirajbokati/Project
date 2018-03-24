@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TourPlannerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TourPlanner.dbo.tblNavbar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblNavbar">
+          <Key>
+            <PropertyRef Name="NavbarID" />
+          </Key>
+          <Property Name="NavbarID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MenuIsActive" Type="bit" />
+          <Property Name="Menuhref" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblPackage">
+          <Key>
+            <PropertyRef Name="PackageID" />
+          </Key>
+          <Property Name="PackageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackageImage" Type="nvarchar" MaxLength="500" />
+          <Property Name="Packagename" Type="nvarchar" MaxLength="50" />
+          <Property Name="PackageDescription" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Function Name="dbNavSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SelectPackage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spAddPackage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PackageImage" Type="nvarchar" Mode="In" />
+          <Parameter Name="Packagename" Type="nvarchar" Mode="In" />
+          <Parameter Name="PackageDescription" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="TourPlannerModelStoreContainer">
+          <EntitySet Name="tblPackage" EntityType="Self.tblPackage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblNavbar" EntityType="Self.tblNavbar" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblNavbar].[NavbarID] AS [NavbarID], 
+    [tblNavbar].[MenuName] AS [MenuName], 
+    [tblNavbar].[MenuIsActive] AS [MenuIsActive], 
+    [tblNavbar].[Menuhref] AS [Menuhref]
+    FROM [dbo].[tblNavbar] AS [tblNavbar]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TourPlannerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TourPlannerEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblNavbars" EntityType="TourPlannerModel.tblNavbar" />
+          <FunctionImport Name="dbNavSelect" ReturnType="Collection(TourPlannerModel.dbNavSelect_Result)" />
+          <FunctionImport Name="SelectPackage" ReturnType="Collection(TourPlannerModel.SelectPackage_Result)" />
+          <FunctionImport Name="spAddPackage">
+            <Parameter Name="PackageImage" Mode="In" Type="String" />
+            <Parameter Name="Packagename" Mode="In" Type="String" />
+            <Parameter Name="PackageDescription" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="tblPackages" EntityType="TourPlannerModel.tblPackage" />
+        </EntityContainer>
+        <EntityType Name="tblNavbar">
+          <Key>
+            <PropertyRef Name="NavbarID" />
+          </Key>
+          <Property Name="NavbarID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MenuIsActive" Type="Boolean" />
+          <Property Name="Menuhref" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="dbNavSelect_Result">
+          <Property Type="Int32" Name="NavbarID" Nullable="false" />
+          <Property Type="String" Name="MenuName" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="MenuIsActive" Nullable="true" />
+          <Property Type="String" Name="Menuhref" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SelectPackage_Result">
+          <Property Type="Int32" Name="PackageID" Nullable="false" />
+          <Property Type="String" Name="PackageImage" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Packagename" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="tblPackage">
+          <Key>
+            <PropertyRef Name="PackageID" />
+          </Key>
+          <Property Name="PackageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackageImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Packagename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PackageDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TourPlannerModelStoreContainer" CdmEntityContainer="TourPlannerEntities1">
+          <EntitySetMapping Name="tblNavbars">
+            <EntityTypeMapping TypeName="TourPlannerModel.tblNavbar">
+              <MappingFragment StoreEntitySet="tblNavbar">
+                <ScalarProperty Name="Menuhref" ColumnName="Menuhref" />
+                <ScalarProperty Name="MenuIsActive" ColumnName="MenuIsActive" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="NavbarID" ColumnName="NavbarID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="dbNavSelect" FunctionName="TourPlannerModel.Store.dbNavSelect">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TourPlannerModel.dbNavSelect_Result">
+                <ScalarProperty Name="NavbarID" ColumnName="NavbarID" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="MenuIsActive" ColumnName="MenuIsActive" />
+                <ScalarProperty Name="Menuhref" ColumnName="Menuhref" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectPackage" FunctionName="TourPlannerModel.Store.SelectPackage">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TourPlannerModel.SelectPackage_Result">
+                <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+                <ScalarProperty Name="PackageImage" ColumnName="PackageImage" />
+                <ScalarProperty Name="Packagename" ColumnName="Packagename" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spAddPackage" FunctionName="TourPlannerModel.Store.spAddPackage" />
+          <EntitySetMapping Name="tblPackages">
+            <EntityTypeMapping TypeName="TourPlannerModel.tblPackage">
+              <MappingFragment StoreEntitySet="tblPackage">
+                <ScalarProperty Name="PackageDescription" ColumnName="PackageDescription" />
+                <ScalarProperty Name="Packagename" ColumnName="Packagename" />
+                <ScalarProperty Name="PackageImage" ColumnName="PackageImage" />
+                <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

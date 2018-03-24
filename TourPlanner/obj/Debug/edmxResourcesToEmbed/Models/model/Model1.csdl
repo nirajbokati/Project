@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TourPlannerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="TourPlannerEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblNavbars" EntityType="TourPlannerModel.tblNavbar" />
+    <FunctionImport Name="dbNavSelect" ReturnType="Collection(TourPlannerModel.dbNavSelect_Result)" />
+    <FunctionImport Name="SelectPackage" ReturnType="Collection(TourPlannerModel.SelectPackage_Result)" />
+    <FunctionImport Name="spAddPackage">
+      <Parameter Name="PackageImage" Mode="In" Type="String" />
+      <Parameter Name="Packagename" Mode="In" Type="String" />
+      <Parameter Name="PackageDescription" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="tblPackages" EntityType="TourPlannerModel.tblPackage" />
+  </EntityContainer>
+  <EntityType Name="tblNavbar">
+    <Key>
+      <PropertyRef Name="NavbarID" />
+    </Key>
+    <Property Name="NavbarID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MenuName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MenuIsActive" Type="Boolean" />
+    <Property Name="Menuhref" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="dbNavSelect_Result">
+    <Property Type="Int32" Name="NavbarID" Nullable="false" />
+    <Property Type="String" Name="MenuName" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="MenuIsActive" Nullable="true" />
+    <Property Type="String" Name="Menuhref" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectPackage_Result">
+    <Property Type="Int32" Name="PackageID" Nullable="false" />
+    <Property Type="String" Name="PackageImage" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Packagename" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="tblPackage">
+    <Key>
+      <PropertyRef Name="PackageID" />
+    </Key>
+    <Property Name="PackageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PackageImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Packagename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PackageDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

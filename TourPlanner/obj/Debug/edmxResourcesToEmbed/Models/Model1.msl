@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TourPlannerModelStoreContainer" CdmEntityContainer="TourPlannerEntities">
+    <EntitySetMapping Name="tblNavbars">
+      <EntityTypeMapping TypeName="TourPlannerModel.tblNavbar">
+        <MappingFragment StoreEntitySet="tblNavbar">
+          <ScalarProperty Name="NavbarID" ColumnName="NavbarID" />
+          <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+          <ScalarProperty Name="MenuIsActive" ColumnName="MenuIsActive" />
+          <ScalarProperty Name="Menuhref" ColumnName="Menuhref" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="dbNavSelect" FunctionName="TourPlannerModel.Store.dbNavSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TourPlannerModel.dbNavSelect_Result">
+          <ScalarProperty Name="NavbarID" ColumnName="NavbarID" />
+          <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+          <ScalarProperty Name="MenuIsActive" ColumnName="MenuIsActive" />
+          <ScalarProperty Name="Menuhref" ColumnName="Menuhref" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,177 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+
+    form {
+        margin: 0px 10px;
+        font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+    }
+
+    h2 {
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
+
+    .container {
+        max-width: 450px;
+        border: 1px solid #d9e2fd;
+    }
+
+    .divider {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 5px;
+    }
+
+        .divider hr {
+            margin: 7px 0px;
+            width: 35%;
+        }
+
+    .left {
+        float: left;
+    }
+
+    .right {
+        float: right;
+    }
+
+    label {
+        float: left;
+    }
+
+    #login{
+        background-color: #ff5a5f;
+        padding: 10px;
+        font-size: 16px;
+        letter-spacing: 1px;
+        color: #f2f2f2;
+    }
+
+        #login:hover {
+            background-color: #fb3535;
+            color: #f2f2f2;
+        }
+
+
+    /*social icons*/
+    .social-btns {
+        font-size: 22px;
+        list-style: none;
+        margin-left:-22px;
+        margin-bottom:10px;
+        line-height:26px;
+    }
+
+        .social-btns li {
+            margin-bottom: 5px;
+        }
+
+            .social-btns li i {
+                font-size: 22px;
+                padding-top: 2px 0px 2px 0px;
+                line-height: 26px;
+            }
+
+        .social-btns .btn-facebook {
+            background-color: #38519f!important;
+            border-color: #293b75;
+            color: #ffffff;
+             width:100%;
+        }
+
+            .social-btns .btn-facebook:hover {
+                color: #ffffff;
+                background-color: #293b75;
+            }
+
+        .social-btns .btn-twitter {
+            background-color: #00a8fa;
+            border-color: #048cce;
+            color: #ffffff;
+            width: 100%;
+        }
+            .social-btns .btn-twitter:hover {
+                color: #ffffff;
+                background-color: #048cce;
+            }
+
+        .social-btns .btn-google {
+            background-color: #df270b;
+            border-color: #a01b03;
+            color: #ffffff;
+            width: 100%;
+        }
+
+            .social-btns .btn-google:hover {
+                color: #ffffff;
+                background-color: #a01b03;
+            }
+
+         .fa{
+                background-color:transparent;
+               
+            }
+
+    input {
+        height: 20px;
+        padding: 50px 10px;
+    }
+
+    .form-group {
+        padding: .5rem .5rem;
+        font-size: 1.3rem;
+        color: #464a4c;
+        background-color: #fff;
+        border-radius: .25rem;
+        -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    }
+
+    .form-control {
+        padding: 25px 12px;
+    }
+    /*social icons close*/
+</style>
+
+<div class="container" style="margin-top:100px;">
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form method="POST" action="#" role="form">
+                  <div class="form-group">
+                        <input id="signupEmail" placeholder="Email" type="email" maxlength="50" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <input id="signupPassword" type="password" maxlength="25" class="form-control" placeholder="Password" length="40">
+                    </div>
+
+                    <div class="form-group">
+                        <button id="login" type="submit" class="btn  btn-block">Log In</button>
+                    </div>
+
+                    <p> Do not have an account? <a href="~/Views/Home/Register.cshtml"> Register</a></p>
+                </form>
+
+
+                <div class="form-group">
+                    <ul class="social-btns center-block">
+                        <li><button class="btn btn-facebook"><i class="fa fa-facebook pull-left" aria-hidden="true"></i>Sign in with Facebook</button></li>
+                        <li><button class="btn btn-twitter"><i class="fa fa-twitter pull-left" aria-hidden="true"></i>Sign in with Twitter</button></li>
+                        <li><button class="btn btn-google"><i class="fa fa-google-plus pull-left" aria-hidden="true"></i>Sign in with Google</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,202 @@
+﻿@model IEnumerable<TourPlanner.Models.model.tblPackage>
+@{
+    ViewBag.Title = "Destination";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminMaster.cshtml";
+}
+
+<style>
+    table {
+        background-color: #fff;
+        margin-top: 10px;
+        box-shadow: 0 2px 2px 0 rgba(153, 153, 153, 0.14), 0 3px 1px -2px rgba(153, 153, 153, 0.2), 0 1px 5px 0 rgba(153, 153, 153, 0.12);
+        box-sizing: border-box;
+        width: 80%;
+    }
+
+        table > thead > tr > th {
+            padding: 10px 0px 10px 0px !important;
+            color: #000000;
+            text-align: center;
+        }
+
+
+    .grid li {
+        float: left;
+        width: 33%;
+        height: 250px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+
+    ul .img-circle {
+        width: 150px;
+        height: 150px;
+        background-color: #ff4444;
+        text-align: center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+    }
+
+    h3 {
+        display: block;
+    }
+
+    td a {
+        padding-left: 14px;
+        padding-right: 0px !important;
+    }
+
+    .glyphicon {
+        color: #fb3535;
+        font-weight: 500;
+    }
+
+    .btn {
+        margin-bottom: 10px !important;
+    }
+
+        .btn > a {
+            color: #fff;
+        }
+
+            .btn > a:hover {
+                color: #f2f2f2;
+                text-decoration: none;
+            }
+
+
+
+    /*grid search css*/
+
+    /* form starting stylings ------------------------------- */
+    .input-group {
+        position: relative;
+        margin-bottom: 45px;
+    }
+
+    input {
+        font-size: 18px;
+        padding: 10px 10px 10px 5px;
+        display: block;
+        width: 300px;
+        border: none;
+        border-bottom: 1px solid #999;
+    }
+
+        input:focus {
+            outline: none;
+        }
+    /* LABEL ======================================= */
+    label {
+        color: #999;
+        font-size: 14px;
+        font-weight: normal;
+        position: absolute;
+        pointer-events: none;
+        left: 5px;
+        top: 10px;
+        transition: 0.2s ease all;
+    }
+
+    /* active state */
+    input:focus ~ label, input:valid ~ label {
+        top: -10px;
+        font-size: 14px;
+        color: #000;
+    }
+
+    /* BOTTOM BARS ================================= */
+    .bar {
+        position: relative;
+        display: block;
+        width: 100% !important;
+    }
+
+        .bar:before, .bar:after {
+            content: '';
+            height: 2px;
+            width: 0;
+            bottom: .5px;
+            position: absolute;
+            transition: 0.2s ease all;
+        }
+
+        .bar:before {
+            left: 50%;
+        }
+
+        .bar:after {
+            right: 50%;
+        }
+
+    /* active state */
+    input:focus ~ .bar:before, input:focus ~ .bar:after {
+        width: 50%;
+    }
+    /*grid search style end*/
+
+
+    .navbar {
+        height: 55px;
+    }
+</style>
+
+<div class="row">
+
+    <div class="col-lg-9" style="margin-top: 80px;">
+
+        <div class="col-lg-2">
+
+            <a href="/Admin/Home/AddDestination"><span class="btn btn-danger">Add Destination</span></a>
+        </div>
+
+        <div class="col-lg-6">
+
+        </div>
+
+        <div class="col-lg-2">
+            <div class="input-group">
+                <input type="text" required>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>
+                    Search
+                </label>
+            </div>
+        </div>
+
+        <table class="table table-hover table-bordered  table-responsive">
+            <thead>
+                <tr>
+                    <th>Package ID</th>
+                    <th>Package Image</th>
+                    <th>Package Name</th>
+                    <th>Package Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+    {
+                <tr>
+                    <th>@item.PackageID</th>
+                    <td>
+                    <img src="~/Content/Images/@item.PackageImage" width="50" height="50" /></td>
+                    <td>@item.Packagename</td>
+                    <td>@item.PackageDescription</td>
+                 
+                    <td style="text-align: center;">
+                        @Html.ActionLink("Update", "Update", new { id = item.PackageID })|
+                        @Html.ActionLink("Delete", "Delete", new { id = item.PackageID })
+
+                    </td>
+                </tr>
+}
+            </tbody>
+        </table>
+    </div>
+</div>

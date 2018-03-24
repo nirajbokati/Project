@@ -1,0 +1,762 @@
+﻿@model IEnumerable<TourPlanner.Models.model.tblPackage>
+
+<style>
+    h2 {
+        margin-top: 2px;
+        margin-bottom: 2px;
+        font-weight: 500 !important;
+        font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+        font-size: 28px !important;
+        line-height: 32px !important;
+        letter-spacing: -0.6px !important;
+        padding-top: 2px !important;
+        padding-bottom: 2px !important;
+        color: #484848 !important;
+        text-decoration: none;
+    }
+
+    body {
+        margin-top: 100px;
+        background-color: #eeeeee;
+    }
+
+    .tabbable-panel {
+        border: 1px solid #eee;
+        margin-bottom: 20px;
+    }
+
+    /* Default mode */
+    .tabbable-line > .nav-tabs {
+        border: none;
+        margin: 0px;
+    }
+
+        .tabbable-line > .nav-tabs > li {
+            margin-right: 2px;
+            background-color: #fff;
+        }
+
+            .tabbable-line > .nav-tabs > li > a > span {
+                border: 0;
+                color: #737373;
+                font-size: 16px;
+                font-weight: 600;
+                padding: 20px 150px 20px 136px;
+                text-align: center;
+                font-family: font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+            }
+
+            .tabbable-line > .nav-tabs > li > a > i {
+                color: #a6a6a6;
+                border-bottom: 1px solid #f2f2f2;
+            }
+
+    .nav-tabs .nav-link.active {
+        background-color: #ff5a5f;
+        color: white;
+        text-align: center !important;
+    }
+
+    .icon{
+        color:#333!important;
+        height:60px;       
+    }
+
+    link.active {
+        color: #464a4c;
+        background-color: #fff;
+        border-color: #ddd #ddd #fff;
+    }
+
+    .nav-tabs .nav-item.show .nav-link .nav-link, .nav-tabs .nav-link {
+        color: black;
+        text-align: center !important;
+        height: 4.5rem;
+    }
+
+    .nav-tabs > .nav-item > a > span {
+        background-color: #fff;
+    }
+
+    .nav-tabs > li > a {
+        padding: 0px;
+    }
+
+    .nav-tabs > li > a {
+        margin-right: 2px;
+        line-height: 1.428571429;
+        border: 0px !important;
+        border-radius: 0px !important;
+        color: #484848 !important;
+    }
+
+
+    .nav-tabs .nav-link {
+        border: 1px solid transparent;
+        border-top-right-radius: .25rem;
+        border-top-left-radius: .25rem;
+    }
+
+    .nav-link {
+        display: block;
+        padding: .5em 1em;
+    }
+
+    .tabbable-line > .nav-tabs > li.active {
+        background-color: #ff5a5f;
+        position: relative;
+    }
+
+    .nav-tabs > a > span {
+        color: #333 !important;
+    }
+
+    .tabbable-line > .nav-tabs > li {
+        border-bottom: 1px solid #f2f2f2;
+    }
+
+        .tabbable-line > .nav-tabs > li > a > span:hover {
+            background-color: #fff !important;
+        }
+
+
+        .tabbable-line > .nav-tabs > li.active > a > span:hover {
+            background-color: #ff5a5f !important;
+        }
+
+
+
+        .tabbable-line > .nav-tabs > li.active > a > span {
+            border: 0;
+            color: #fff !important;
+            background-color: #ff5a5f;
+            border: none !important;
+        }
+
+
+
+        .tabbable-line > .nav-tabs > li.active > a > i {
+            color: #404040;
+        }
+
+    .tabbable-line > .tab-content {
+        background-color: #fff;
+        border: 0;
+        border-top: 1px solid #eee;
+        padding: 30px 50px;
+    }
+
+    .portlet .tabbable-line > .tab-content {
+        padding-bottom: 0;
+    }
+
+
+    .box {
+        background-color: #fff;
+        height: 100%;
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+        border-radius: 2px;
+    }
+
+
+    .glyphicon {
+        color: #484848;
+    }
+
+
+    .table > thead > tr > th {
+        border: 1px solid #fff;
+    }
+
+    .table1 > thead > tr > th {
+        border: 1px solid #fff;
+        text-align: center
+    }
+
+
+    .table > tbody > tr > td {
+        border: 1px solid #fff;
+    }
+
+    /*tab css end here*/
+
+    .single {
+        background: #fff;
+    }
+
+        .single ul li {
+            margin-bottom: 0;
+            border-bottom: 1px solid #484848;
+            padding: 15px;
+        }
+
+    .offer {
+        background-color: #fff;
+    }
+
+        .offer > ul > li {
+            border-bottom: none !important;
+            padding: 3px;
+        }
+
+    .single li a {
+        color: #666;
+        font-size: 14px;
+        text-transform: uppercase;
+        line-height: 40px;
+        display: block;
+        text-decoration: none;
+        background-color: #fff;
+    }
+
+        .single li a:hover {
+            color: #ff173c;
+        }
+
+    .single li:last-child a {
+        border-bottom: 0;
+    }
+
+    p {
+        text-align: justify;
+    }
+
+    .day {
+        margin-left: -430px;
+        font-weight: 600 !important;
+        font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+        font-size: 16px !important;
+        line-height: 22px !important;
+        letter-spacing: -0.6px !important;
+        color: #484848 !important;
+    }
+
+
+    .btn {
+        text-decoration: none;
+        color: black;
+        border: 1px solid;
+        border-radius: 50px;
+        transition: .5s;
+    }
+
+    .modal-dialog {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: 600px;
+        height: 500px;
+    }
+
+
+    .panel-title {
+        text-align: left !important;
+        padding: 10px;
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .panel > a {
+        text-decoration: none;
+        color: #484848;
+        font-weight: 800;
+    }
+
+    header {
+        padding: 50px 0;
+    }
+
+        header h1 {
+            color: white;
+            text-shadow: 1px 3px 4px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            font-size: 40px;
+            letter-spacing: 0.4px;
+            font-family: "Raleway", sans-serif;
+        }
+
+
+    /*Gallery CSS BEGIN*/
+    .well {
+        background-color: #fff;
+    }
+
+    .card {
+        background: #fafafa;
+        border-radius: 2px;
+        display: inline-block;
+        height: 350px;
+        margin: 1rem;
+        position: relative;
+        width: 100%;
+    }
+
+    .card-1 {
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    }
+
+        .card-1:hover {
+            box-shadow: 0 10px 10px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        }
+
+
+    .form {
+        background-color: #fff;
+        margin-top: 50px;
+    }
+
+    .form-control {
+        height: 50px;
+    }
+
+    label {
+        display: inline-block;
+        max-width: 100%;
+        margin-bottom: 16px;
+        font-weight: 700;
+    }
+    /*Gallery CSS end here*/
+
+
+    /*Review style begin here*/
+
+    .panel-shadow {
+        box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
+    }
+
+    .panel-white {
+        border: 1px solid #dddddd;
+    }
+
+        .panel-white .panel-heading {
+            color: #333;
+            background-color: #fff;
+            border-color: #ddd;
+        }
+
+        .panel-white .panel-footer {
+            background-color: #fff;
+            border-color: #ddd;
+        }
+
+    .post .post-heading {
+        height: 95px;
+        padding: 20px 15px;
+    }
+
+        .post .post-heading .avatar {
+            width: 60px;
+            height: 60px;
+            display: block;
+            margin-right: 15px;
+        }
+
+        .post .post-heading .meta .title {
+            margin-bottom: 0;
+        }
+
+            .post .post-heading .meta .title a {
+                color: black;
+            }
+
+                .post .post-heading .meta .title a:hover {
+                    color: #aaaaaa;
+                }
+
+        .post .post-heading .meta .time {
+            margin-top: 8px;
+            color: #999;
+        }
+
+    .post .post-image .image {
+        width: 100%;
+        height: auto;
+    }
+
+    .post .post-description {
+        padding: 15px;
+    }
+
+        .post .post-description p {
+            font-size: 14px;
+        }
+
+        .post .post-description .stats {
+            margin-top: 20px;
+        }
+
+            .post .post-description .stats .stat-item {
+                display: inline-block;
+                margin-right: 15px;
+            }
+
+                .post .post-description .stats .stat-item .icon {
+                    margin-right: 8px;
+                }
+
+    /*Review Style end here*/
+
+
+</style>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="tabbable-panel">
+                    <div class="tabbable-line">
+                        <ul class="nav nav-tabs ">
+                            <li class="active nav-item all-space-list">
+                                <a href="#tab_default_1" data-toggle="tab" aria-expanded="true">
+                                    <span class="glyphicon glyphicon-th-list icon">Details</span>
+                                </a>
+                            </li>
+                            <li class="nav-item all-space-list">
+                                <a href="#tab_default_2" data-toggle="tab" aria-expanded="true">
+                                    <span class="glyphicon glyphicon-picture icon"> Gallery </span>
+                                </a>
+                            </li>
+                            <li class="nav-item all-space-list">
+                                <a href="#tab_default_3" data-toggle="tab" aria-expanded="true">
+                                    <span class="glyphicon glyphicon-user icon">User Reviews</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_default_1">
+                                <div class="row">
+                                    <div class="col-lg-6 pull-left">
+                                        <h4 class="text-left"> District:<span>Kaski</span></h4> <br />
+                                        <h4 class="text-left"> Zone: <span>Gandaki</span></h4> <br />
+                                        <h4 class="text-left"> Travel Medium:<span>Bus</span></h4>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h4 class="text-left">
+                                            AMAZING MUSTANG
+                                        </h4>
+                                        <p>
+                                            Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.
+                                            Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.
+                                            Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab_default_2">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="card card-1">
+                                            <img src="~/Content/Images/pokhara.jpg" />
+                                            <h3 class="text-center">Manang Diary</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="card card-1">
+                                            <img src="~/Content/Images/pokhara.jpg" />
+                                            <h3 class="text-center">Gokyo Lake</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab_default_3">
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="panel panel-white post panel-shadow">
+                                            <div class="post-heading">
+                                                <div class="pull-left image">
+
+                                                    <img src="~/Content/Images/admin.png" class="img-circle avatar" alt="user profile image" height="50" width="50">
+                                                </div>
+                                                <div class="pull-left meta">
+                                                    <div class="title h5">
+                                                        <a href="#"><b>Ryan Haywood</b></a>
+                                                        made a post.
+                                                    </div>
+                                                    <h6 class="text-muted time">1 minute ago</h6>
+                                                </div>
+                                            </div>
+                                            <div class="post-description">
+                                                <p>Bootdey is a gallery of free snippets resources templates and utilities for bootstrap css hmtl js framework. Codes for developers and web designers</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <span class="glyphicon glyphicon-plus"></span>  <span> Day 1:</span>  <span> Welcome To Mustang</span>
+                                    <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                                </h4>
+                            </div>
+                        </a>
+                        <div id="collapse1" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <span class="glyphicon glyphicon-plus"></span>  <span> Day 2:</span> <span> Welcome To Mustang</span>
+                                    <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                                </h4>
+                            </div>
+                        </a>
+                        <div id="collapse2" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <span class="glyphicon glyphicon-plus"></span> <span> Day 3:</span>  <span> Welcome To Mustang</span>
+                                    <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                                </h4>
+                            </div>
+                        </a>
+                        <div id="collapse3" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <span class="glyphicon glyphicon-plus"></span>  <span>Day 4:</span>  <span> Welcome To Mustang</span>
+                                    <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                                </h4>
+                            </div>
+                        </a>
+                        <div id="collapse4" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive" style="margin-top:15px;">
+                    <table class="table  box table1">
+                        <thead>
+                            <tr>
+                                <th>Trip Start</th>
+                                <th>Price</th>
+                                <th>Book Now</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+
+                                <td>Start Date</td>
+                                <td>
+                                    Economic
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    End Date
+                                </td>
+                                <td>Premium</td>
+                                <td>
+                                    <div class="button">
+                                        <a class="btn btn-default" data-toggle="modal" data-target="#contact" data-original-title>
+                                            Confirm Now
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Status
+                                </td>
+                                <td>Luxurious</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="single category offer">
+                    <h2>Offer Includes </h2>
+                    <hr />
+                    <ul class="list-unstyled">
+
+                        <li>
+                            <a href="" title="">  <span class="text-left day">  </span><span> Airfare KTM-BKK-KTM. </span> </a>
+                        </li>
+                        <li>
+                            <a href="" title="">  <span class="text-left day"> </span><span> Airfare KTM-BKK-KTM. </span> </a>
+                        </li>
+                        <li>
+                            <a href="" title="">  <span class="text-left day"> </span><span>Airfare KTM-BKK-KTM.  </span> </a>
+                        </li>
+                        <li>
+                            <a href="" title="">  <span class="text-left day">  </span><span> Airfare KTM-BKK-KTM.  </span> </a>
+                        </li>
+
+
+                    </ul>
+                </div>
+
+
+                <div class="single category offer">
+                    <h2>Offer Excludes </h2>
+                    <hr />
+                    <ul class="list-unstyled">
+
+                        <li>
+                            <a href="" title="">  <span class="text-left day">  </span><span> Airfare KTM-BKK-KTM. </span> </a>
+                        </li>
+                        <li>
+                            <a href="" title="">  <span class="text-left day"> </span><span> Airfare KTM-BKK-KTM. </span> </a>
+                        </li>
+                        <li>
+                            <a href="" title="">  <span class="text-left day"> </span><span>Airfare KTM-BKK-KTM.  </span> </a>
+                        </li>
+                        <li>
+                            <a href="" title="">  <span class="text-left day">  </span><span> Airfare KTM-BKK-KTM.  </span> </a>
+                        </li>
+
+
+                    </ul>
+                </div>
+
+
+
+            </div>
+            <div class="col-lg-4">
+                <div class="table-responsive col-lg-12">
+                    <table class="table table-bordered box">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>BOOKING CONTACT</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Phone Number:
+                                </td>
+                                <td>12-1345667890</td>
+
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Email
+                                </td>
+                                <td> sales@tourplanner.com
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <br /><br /><br />
+            <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="panel-title" id="contactLabel"><span class="glyphicon glyphicon-info-sign"></span> MAKE AN ENQUIRY</h4>
+
+                        </div>
+                        <h4>
+                            Package Details:  3 Days Pokhara, Pokhara
+
+                        </h4>
+                        <div class="row">
+                            <div class="col-lg-2">
+
+                            </div>
+                            <div class="col-lg-3">
+                                <h5 class="text-center">Travel Time: </h5>
+                            </div>
+                            <div class="col-lg-3">
+                                <h5 class="text-center"> Cost: </h5>
+                            </div>
+                            <div class="col-lg-4">
+
+                            </div>
+
+                        </div>
+
+                        <form action="#" method="post" accept-charset="utf-8">
+                            <div class="modal-body" style="padding: 5px;">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                        <input class="form-control" type="date" required />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                        <input class="form-control" name="email" placeholder="Full NameName" type="text" required />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                        <input class="form-control" name="email" placeholder="Contact Number" type="text" required />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                        <input class="form-control" name="email" placeholder="Email" type="text" required />
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="panel-footer" style="margin-bottom:-14px;">
+                                <input type="submit" class="btn btn-success" value="Book Package" />
+                                <!--<span class="glyphicon glyphicon-ok"></span>-->
+                                <input type="reset" class="btn btn-danger" value="Clear" />
+                                <!--<span class="glyphicon glyphicon-remove"></span>-->
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
